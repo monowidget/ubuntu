@@ -9,7 +9,14 @@ RUN apt-get update && \
     telnet \
     traceroute \
     net-tools \
-    iproute2
+    iproute2 \
+    nginx
 
-# 포트를 열어 놓지 않고, 컨테이너가 실행될 때 바로 Bash 쉘을 시작
-CMD ["bash"]
+# Nginx 설정
+RUN echo "daemon off;" >> /etc/nginx/nginx.conf
+
+# 포트 80 열기
+EXPOSE 80
+
+# Nginx 실행
+CMD ["nginx"]

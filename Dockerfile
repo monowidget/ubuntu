@@ -2,7 +2,7 @@
 FROM ubuntu:latest
 
 # 필요한 패키지 설치
-RUN apt-get update && apt-get install -y netcat curl iputils-ping traceroute
+RUN apt-get update && apt-get install -y curl iputils-ping traceroute
 
 ENV IP_ADDRESS=0.0.0.0
 ENV PORT=8080

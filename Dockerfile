@@ -1,5 +1,5 @@
 # 기본 이미지로 Ubuntu 사용
-FROM ubuntu:22.04
+FROM ubuntu:latest
 
 # 필요한 패키지 설치
 RUN apt-get update && \
@@ -10,13 +10,9 @@ RUN apt-get update && \
     traceroute \
     net-tools \
     iproute2 \
-    nginx
+    netcat
 
-# Nginx 설정
-RUN echo "daemon off;" >> /etc/nginx/nginx.conf
+ENV IP_ADDRESS=0.0.0.0
+ENV PORT=8080
 
-# 포트 80 열기
-EXPOSE 80
-
-# Nginx 실행
-CMD ["nginx"]
+CMD ["sh", "-c", "while true; do nc -zv $IP_ADDRESS $PORT; sleep 10; done"]

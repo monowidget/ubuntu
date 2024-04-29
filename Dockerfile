@@ -5,7 +5,7 @@ FROM ubuntu:latest
 USER root
 
 # 필요한 패키지 설치
-RUN apt-get update && apt-get install -y curl iputils-ping traceroute wget netcat-openbsd mysql-client
+RUN apt-get update && apt-get install -y curl iputils-ping traceroute wget netcat-openbsd mysql-client dnsutils
 
 ENV IP_ADDRESS=0.0.0.0
 ENV PORT=8080
